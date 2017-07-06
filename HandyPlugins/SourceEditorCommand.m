@@ -113,6 +113,11 @@
             NSUInteger firstLine = firstTxtRange.start.line;
             NSUInteger lastLine = lastTxtRange.end.line;
             
+            // when double click to select the line, the following line will also be selected but with no length [yufei Jul 6'17@19:08]
+            if (lastTxtRange.end.line > firstTxtRange.start.line && lastTxtRange.end.column == 0) {
+                lastLine--;
+            }
+            
             NSString *messageNotationRegex = @"\\[[ ]{0,}(.*)\\sset(.*?)[ ]{0,}\\:[ ]{0,}(.*)\\]\\;";
             NSRegularExpression *msgNotationRegex = [[NSRegularExpression alloc] initWithPattern:messageNotationRegex options:NSRegularExpressionCaseInsensitive error:nil];
             
