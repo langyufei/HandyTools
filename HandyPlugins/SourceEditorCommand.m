@@ -100,73 +100,46 @@
 
 - (void)convertToDotNotation:(XCSourceEditorCommandInvocation *)invocation
 {
-    NSArray *selectedRanges = [textView selectedRanges];
-    if (selectedRanges.count > 0)
-    {
-        /* this is a comment [yufei]
-         *
-         NSRange range = [[selectedRanges firstObject] rangeValue];
-         NSRange lineRange = [textView.textStorage.string lineRangeForRange:range];
-         NSString *line = [textView.textStorage.string substringWithRange:lineRange];
-         */
-        
-        NSRange range = [[selectedRanges firstObject] rangeValue];
-        NSRange lineRange = [textView.textStorage.string lineRangeForRange:range];
-        NSString *line = [textView.textStorage.string substringWithRange:lineRange];
-        
-        NSString *dotNotationRegex = @".*[.].*[ ]{0,}=[ ]{0,}.*[ ]{0,}\\;";
-        NSString *messageNotationRegex = @"\\[[ ]{0,}(.*)\\sset(.*?)[ ]{0,}\\:[ ]{0,}(.*)\\]\\;";
-        
-        NSRegularExpression *dotNotationRex = [[NSRegularExpression alloc] initWithPattern:dotNotationRegex options:NSRegularExpressionCaseInsensitive error:nil];
-        NSArray *dotNotationMatches = [dotNotationRex matchesInString:line options:0 range:NSMakeRange(0, line.length)];
-        
-        NSRegularExpression *MsgNotationRegex = [[NSRegularExpression alloc] initWithPattern:messageNotationRegex options:NSRegularExpressionCaseInsensitive error:nil];
-        NSArray *msgNotationMatches = [MsgNotationRegex matchesInString:line options:0 range:NSMakeRange(0, line.length)];
-        
-        NSInteger addedLength = 0;
-        
-        for (NSTextCheckingResult *result in msgNotationMatches)
-        {
-            NSRange matchedRangeInLine = result.range;
-            NSRange matchedRangeInDocument = NSMakeRange(lineRange.location + matchedRangeInLine.location + addedLength, matchedRangeInLine.length);
-            NSString *string = [line substringWithRange:matchedRangeInLine];
-            
-            NSString *receiver = [line substringWithRange:[result rangeAtIndex:1]];
-            NSString *property = [line substringWithRange:[result rangeAtIndex:2]];
-            NSString *newValue = [line substringWithRange:[result rangeAtIndex:3]];
-            
-            if ([self isRange:matchedRangeInLine inSkipedRanges:dotNotationMatches]) {
-                continue;
-            }
-            
-            NSString *lowerCasePropertyFirstLetter = [[[property substringToIndex:1] lowercaseString] stringByAppendingString:[property substringFromIndex:1]];
-            NSString *outputString = [NSString stringWithFormat:@"%@.%@ = %@;", receiver, lowerCasePropertyFirstLetter, newValue];
-            
-            addedLength = addedLength + outputString.length - string.length;
-            
-            if ([textView shouldChangeTextInRange:matchedRangeInDocument replacementString:outputString])
-            {
-                [textView.textStorage replaceCharactersInRange:matchedRangeInDocument withAttributedString:[[NSAttributedString alloc] initWithString:outputString]];
-                [textView didChangeText];
-            }
-        }
-    }
-}
-
-- (BOOL)isRange:(NSRange)range inSkipedRanges:(NSArray *)ranges
-{
-    for (int i = 0; i < [ranges count]; i++)
-    {
-        NSTextCheckingResult *result = [ranges objectAtIndex:i];
-        NSRange skippedRange = result.range;
-        
-        if (skippedRange.location <= range.location && skippedRange.location + skippedRange.length > range.location + range.length)
-        {
-            return YES;
-        }
-    }
+    XCSourceTextBuffer *buffer = invocation.buffer;
     
-    return NO;
+    if (buffer.selections.count > 0)
+    {
+        XCSourceTextRange *firstTxtRange = [buffer.selections firstObject];
+        XCSourceTextRange *lastTxtRange = [buffer.selections lastObject];
+        
+        // normally this mean something is selected
+        if (firstTxtRange.start.line != lastTxtRange.end.line || firstTxtRange.start.column != lastTxtRange.end.column)
+        {
+            NSUInteger firstLine = firstTxtRange.start.line;
+            NSUInteger lastLine = lastTxtRange.end.line;
+            
+            NSString *messageNotationRegex = @"\\[[ ]{0,}(.*)\\sset(.*?)[ ]{0,}\\:[ ]{0,}(.*)\\]\\;";
+            NSRegularExpression *msgNotationRegex = [[NSRegularExpression alloc] initWithPattern:messageNotationRegex options:NSRegularExpressionCaseInsensitive error:nil];
+            
+            for (NSInteger idx = firstLine; idx <= lastLine; idx++)
+            {
+                NSString *strAtLine = buffer.lines[idx];
+                if (strAtLine.length > 0)
+                {
+                    NSArray *msgNotationMatches = [msgNotationRegex matchesInString:strAtLine options:0 range:NSMakeRange(0, strAtLine.length)];
+                    NSAssert(msgNotationMatches.count < 2, @"Found multiple matches at the same line");
+                    NSTextCheckingResult *result = [msgNotationMatches firstObject];
+                    if (result)
+                    {
+                        NSString *receiver = [strAtLine substringWithRange:[result rangeAtIndex:1]];
+                        NSString *property = [strAtLine substringWithRange:[result rangeAtIndex:2]];
+                        NSString *newValue = [strAtLine substringWithRange:[result rangeAtIndex:3]];
+                        
+                        NSString *lowerCasePropertyFirstLetter = [[[property substringToIndex:1] lowercaseString] stringByAppendingString:[property substringFromIndex:1]];
+                        NSString *outputString = [NSString stringWithFormat:@"%@.%@ = %@;", receiver, lowerCasePropertyFirstLetter, newValue];
+                        
+                        NSRange matchedRangeInLine = result.range;
+                        buffer.lines[idx] = [strAtLine stringByReplacingCharactersInRange:matchedRangeInLine withString:outputString];
+                    }
+                }
+            }
+        }
+    }
 }
 
 @end
