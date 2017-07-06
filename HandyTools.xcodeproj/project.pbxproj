@@ -12,7 +12,35 @@
 		0CCC3C281F0EC272008CA8D7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCC3C271F0EC272008CA8D7 /* ViewController.m */; };
 		0CCC3C2A1F0EC272008CA8D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CCC3C291F0EC272008CA8D7 /* Assets.xcassets */; };
 		0CCC3C2D1F0EC272008CA8D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CCC3C2B1F0EC272008CA8D7 /* Main.storyboard */; };
+		0CCC3C3B1F0EC2B3008CA8D7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCC3C3A1F0EC2B3008CA8D7 /* Cocoa.framework */; };
+		0CCC3C411F0EC2B3008CA8D7 /* SourceEditorExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCC3C401F0EC2B3008CA8D7 /* SourceEditorExtension.m */; };
+		0CCC3C441F0EC2B3008CA8D7 /* SourceEditorCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CCC3C431F0EC2B3008CA8D7 /* SourceEditorCommand.m */; };
+		0CCC3C481F0EC2B3008CA8D7 /* HandyPlugins.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0CCC3C381F0EC2B3008CA8D7 /* HandyPlugins.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0CCC3C461F0EC2B3008CA8D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0CCC3C151F0EC272008CA8D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0CCC3C371F0EC2B3008CA8D7;
+			remoteInfo = HandyPlugins;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0CCC3C4C1F0EC2B3008CA8D7 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0CCC3C481F0EC2B3008CA8D7 /* HandyPlugins.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0CCC3C1D1F0EC272008CA8D7 /* HandyTools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandyTools.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,6 +52,14 @@
 		0CCC3C291F0EC272008CA8D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CCC3C2C1F0EC272008CA8D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0CCC3C2E1F0EC272008CA8D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CCC3C381F0EC2B3008CA8D7 /* HandyPlugins.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HandyPlugins.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CCC3C3A1F0EC2B3008CA8D7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		0CCC3C3E1F0EC2B3008CA8D7 /* HandyPlugins.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HandyPlugins.entitlements; sourceTree = "<group>"; };
+		0CCC3C3F1F0EC2B3008CA8D7 /* SourceEditorExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceEditorExtension.h; sourceTree = "<group>"; };
+		0CCC3C401F0EC2B3008CA8D7 /* SourceEditorExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceEditorExtension.m; sourceTree = "<group>"; };
+		0CCC3C421F0EC2B3008CA8D7 /* SourceEditorCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceEditorCommand.h; sourceTree = "<group>"; };
+		0CCC3C431F0EC2B3008CA8D7 /* SourceEditorCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceEditorCommand.m; sourceTree = "<group>"; };
+		0CCC3C451F0EC2B3008CA8D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +70,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0CCC3C351F0EC2B3008CA8D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CCC3C3B1F0EC2B3008CA8D7 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -41,6 +85,8 @@
 			isa = PBXGroup;
 			children = (
 				0CCC3C1F1F0EC272008CA8D7 /* HandyTools */,
+				0CCC3C3C1F0EC2B3008CA8D7 /* HandyPlugins */,
+				0CCC3C391F0EC2B3008CA8D7 /* Frameworks */,
 				0CCC3C1E1F0EC272008CA8D7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				0CCC3C1D1F0EC272008CA8D7 /* HandyTools.app */,
+				0CCC3C381F0EC2B3008CA8D7 /* HandyPlugins.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,6 +123,35 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		0CCC3C391F0EC2B3008CA8D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0CCC3C3A1F0EC2B3008CA8D7 /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0CCC3C3C1F0EC2B3008CA8D7 /* HandyPlugins */ = {
+			isa = PBXGroup;
+			children = (
+				0CCC3C3F1F0EC2B3008CA8D7 /* SourceEditorExtension.h */,
+				0CCC3C401F0EC2B3008CA8D7 /* SourceEditorExtension.m */,
+				0CCC3C421F0EC2B3008CA8D7 /* SourceEditorCommand.h */,
+				0CCC3C431F0EC2B3008CA8D7 /* SourceEditorCommand.m */,
+				0CCC3C451F0EC2B3008CA8D7 /* Info.plist */,
+				0CCC3C3D1F0EC2B3008CA8D7 /* Supporting Files */,
+			);
+			path = HandyPlugins;
+			sourceTree = "<group>";
+		};
+		0CCC3C3D1F0EC2B3008CA8D7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0CCC3C3E1F0EC2B3008CA8D7 /* HandyPlugins.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,15 +162,34 @@
 				0CCC3C191F0EC272008CA8D7 /* Sources */,
 				0CCC3C1A1F0EC272008CA8D7 /* Frameworks */,
 				0CCC3C1B1F0EC272008CA8D7 /* Resources */,
+				0CCC3C4C1F0EC2B3008CA8D7 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0CCC3C471F0EC2B3008CA8D7 /* PBXTargetDependency */,
 			);
 			name = HandyTools;
 			productName = HandyTools;
 			productReference = 0CCC3C1D1F0EC272008CA8D7 /* HandyTools.app */;
 			productType = "com.apple.product-type.application";
+		};
+		0CCC3C371F0EC2B3008CA8D7 /* HandyPlugins */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0CCC3C491F0EC2B3008CA8D7 /* Build configuration list for PBXNativeTarget "HandyPlugins" */;
+			buildPhases = (
+				0CCC3C341F0EC2B3008CA8D7 /* Sources */,
+				0CCC3C351F0EC2B3008CA8D7 /* Frameworks */,
+				0CCC3C361F0EC2B3008CA8D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HandyPlugins;
+			productName = HandyPlugins;
+			productReference = 0CCC3C381F0EC2B3008CA8D7 /* HandyPlugins.appex */;
+			productType = "com.apple.product-type.xcode-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -106,6 +201,11 @@
 				ORGANIZATIONNAME = "The Casey Group";
 				TargetAttributes = {
 					0CCC3C1C1F0EC272008CA8D7 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = TN5JK4LF42;
+						ProvisioningStyle = Automatic;
+					};
+					0CCC3C371F0EC2B3008CA8D7 = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = TN5JK4LF42;
 						ProvisioningStyle = Automatic;
@@ -126,6 +226,7 @@
 			projectRoot = "";
 			targets = (
 				0CCC3C1C1F0EC272008CA8D7 /* HandyTools */,
+				0CCC3C371F0EC2B3008CA8D7 /* HandyPlugins */,
 			);
 		};
 /* End PBXProject section */
@@ -137,6 +238,13 @@
 			files = (
 				0CCC3C2A1F0EC272008CA8D7 /* Assets.xcassets in Resources */,
 				0CCC3C2D1F0EC272008CA8D7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CCC3C361F0EC2B3008CA8D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,7 +261,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0CCC3C341F0EC2B3008CA8D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CCC3C411F0EC2B3008CA8D7 /* SourceEditorExtension.m in Sources */,
+				0CCC3C441F0EC2B3008CA8D7 /* SourceEditorCommand.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0CCC3C471F0EC2B3008CA8D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0CCC3C371F0EC2B3008CA8D7 /* HandyPlugins */;
+			targetProxy = 0CCC3C461F0EC2B3008CA8D7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0CCC3C2B1F0EC272008CA8D7 /* Main.storyboard */ = {
@@ -260,12 +385,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = TN5JK4LF42;
 				INFOPLIST_FILE = HandyTools/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.caseygrp.HandyTools;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -273,12 +400,48 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = TN5JK4LF42;
 				INFOPLIST_FILE = HandyTools/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.caseygrp.HandyTools;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Release;
+		};
+		0CCC3C4A1F0EC2B3008CA8D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = HandyPlugins/HandyPlugins.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = TN5JK4LF42;
+				INFOPLIST_FILE = HandyPlugins/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.caseygrp.HandyTools.HandyPlugins;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		0CCC3C4B1F0EC2B3008CA8D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = HandyPlugins/HandyPlugins.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = TN5JK4LF42;
+				INFOPLIST_FILE = HandyPlugins/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.caseygrp.HandyTools.HandyPlugins;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -299,6 +462,14 @@
 			buildConfigurations = (
 				0CCC3C321F0EC272008CA8D7 /* Debug */,
 				0CCC3C331F0EC272008CA8D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		0CCC3C491F0EC2B3008CA8D7 /* Build configuration list for PBXNativeTarget "HandyPlugins" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0CCC3C4A1F0EC2B3008CA8D7 /* Debug */,
+				0CCC3C4B1F0EC2B3008CA8D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
